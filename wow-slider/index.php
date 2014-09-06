@@ -33,7 +33,7 @@
             </div>
             <script type='text/javascript' src='<?= BASE_URL ?>wow-slider/engine/wowslider.js'></script>
             <?php
-            if (!$_REQUEST["slider_script_loaded"]) {
+            if(!$_REQUEST["slider_script_loaded"]) {
                 echo "<script type='text/javascript' src='".BASE_URL."wow-slider/engine/slider-script.js'></script>";
                 $_REQUEST["slider_script_loaded"] = true;
             }
