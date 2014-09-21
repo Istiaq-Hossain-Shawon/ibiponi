@@ -1074,6 +1074,7 @@
                     </div>
                     <table style="margin-top:4%;">
                         <?php
+
                             $categories = \Util\AppUtil::getFileNames("wow-slider/data/images/");
                             $cate_size = count($categories);
                             $i = 0;
