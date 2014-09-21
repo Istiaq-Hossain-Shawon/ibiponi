@@ -3,7 +3,6 @@
     require_once("config.php");
     require_once("util/AppUtil.php");
 	require("webconfig.php");
-    $_REQUEST["slider_script_loaded"] = false;
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -969,31 +968,65 @@
                                             <a href="javascript:void(3)" title=""><img src="img/mslider/Hony-Firm.jpg" alt="" width="845" height="550px"></a>
                                         </li>
                                     </ul>
-                                   	<script type="text/javascript">
-                                        $bn1(document).ready(function(){
-                                            $bn1("#slideshowWrapper, ul#slideshow").show();
-                                            $bn1("#loading").hide();
-                                            $bn1("#slideshowWrapper, ul#slideshow")
-                                                .css("width","845px")
-                                                .css("height","550px");
-                                            $bn1('#slideshow').fadeSlideShow({
-                                                width: 845, // default width of the slideshow
-                                                height: 383, // default height of the slideshow						
-                                                PlayPauseElement: '', // default css id for the play / pause element
-                                                speed: 5000, // default animation transition speed						
-                                                interval: 19000 // default interval between image change
-                                            });
-                                        });
-                                    </script>
+                                   	
                                    	<div style="margin-top:1%; height:31%">
+                                        <div class="input-form" style="float:left; height:100%; width:33%;">
+                                           <table style="margin-top:4%;">
+                        <?php
+                            $categories = \Util\AppUtil::getFileNames("wow-slider/data/images/");
+                            $cate_size = count($categories);
+                            $i = 0;
+                            foreach($categories as $category) {
+                                if($i%4 == 0) {
+                                    echo '<tr class="ma-main-container col1-layout">';
+                                }
+                                echo '<td style="border:thin; width:25%;">';
+                                $type = $category;
+                                include('wow-slider/index.php');
+                                echo '</td>';
+                                $i++;
+                                if($i%4 == 0) {
+                                    echo '</tr><tr><td><br></td></tr>';
+                                }
+                            }
+                        ?>
+                    </table> 
+                                           
+                                        </div>
+                                        <script type="text/javascript">
+//                                            $(document).ready(function(){
+//                                                $("button").click(function(){
+//                                                    $(".input-form").find("input").each(function() {
+//                                                        document.writeln($(this).val())
+//                                                    })
+//                                                });
+//                                            });$(document).ready(function(){
+/*$("button").click(function(){
+    $("#tb1").find("input").each(function() {
+        document.writeln($(this).val())    })
+});
+});*/
+                                            $("button").click(function(){
+                                                $("#tb1").find("tr").each(function() {
+
+                                                    var x = $(this).find('[type="checkbox"]')
+                                                    alert(x);
+                                                    if(x !== undefined && x.checked) {
+                                                        document.writeln($(this).find('[name="text1"]').val())
+                                                    }
+
+                                                })
+                                            });
+
+
+
+                                        </script>
                                         <div style="float:left; height:100%; width:33%;">
-                                        	<img style="height:100%; width:100%;" src="img/fixed/ict.jpg">
+
+
                                         </div>
                                         <div style="float:left; height:100%; width:33%;">
-                                            <img style="height:100%; width:100%;" src="img/fixed/ict.jpg">
-                                        </div>
-                                        <div style="float:left; height:100%; width:33%;">
-                                            <img style="height:100%; width:100%;" src="img/fixed/ict.jpg">
+
                                         </div>
                                         <div style="clear:both"></div>
                                         </div>
@@ -1005,142 +1038,7 @@
                       </div>
                     </div>
                     <table style="margin-top:4%;">
-                        <tr class="ma-main-container col1-layout">
-                            <td style="border:solid; width:25%;">                                   
-                                <?php
-                                $type="bracelet";
-                                include('wow-slider/index.php');
-                                ?>                      
-
-                            </td>
-
-
-                            <!--<td style="border:solid; width:25%;"><a href="product.php"><img style="height:242px;  width:100%;" src="img/fixed/ict.jpg"></a></td>-->
-<!--                            <td style="border:solid; width:25%;"><img style="height:242px;  width:100%;" src="img/fixed/ict.jpg"></td>-->
-                            <td style="border:solid; width:25%;">
-
-                                <?php
-                                $type="freeze"; 
-                                include('wow-slider/index.php');
-                                ?> 
-
-
-                            </td>
-                            
-                            <td style="border:solid; width:25%;">                                
-                                
-                                <?php
-                                $type="gift"; 
-                                include('wow-slider/index.php');
-                                ?> 
-                            </td>
-                            <td style="border:solid; width:25%;">                                
-                                
-                                <?php
-                                $type="guitar";
-                                include('wow-slider/index.php');
-                                ?> 
-                            </td>
-                        </tr>
-                        <tr><td><br /></td></tr>    
-                        <tr style="margin-top:5px; border:solid">
-                            <td style="border:solid; width:25%;"> <?php
-                            $type="jwelary";    
-                            include('wow-slider/index.php');
-                                ?> </td>
-                            <td style="border:solid; width:25%;"> <?php
-                                
-                            $type="laptop";
-                            include('wow-slider/index.php');
-                                ?> </td>
-                            <td style="border:solid; width:25%;"> <?php
-                                
-                            $type="mobile";
-                            include('wow-slider/index.php');
-                                ?> </td>
-                            <td style="border:solid; width:25%;"> <?php
-                            $type="modem";
-                                include('wow-slider/index.php');
-                                ?> </td>
-                        </tr>
-                        <tr><td><br /></td></tr>                                
-                        <tr style="margin-top:5px; border:solid">
-                            <td style="border:solid; width:25%;">
-                                <?php
-                                $type="money-bag";
-                                include('wow-slider/index.php');
-                                ?>   
-                            </td>
-                            <td style="border:solid; width:25%;">
-                                <?php
-                                $type="pants";
-                                include('wow-slider/index.php');
-                                ?> 
-                            </td>
-                            <td style="border:solid; width:25%;">
-                                <?php
-                                $type="pendrive";
-                                include('wow-slider/index.php');
-                                ?> 
-                            </td>
-                            <td style="border:solid; width:25%;">
-                                <?php
-                                
-                                $type="radio";
-                                include('wow-slider/index.php');
-                                ?> 
-                            </td>
-                        </tr>
-                        <tr><td><br /></td></tr>                                
-                        <tr style="margin-top:5px; border:solid">
-                            <td style="border:solid; width:25%;">  <?php
-                                
-                            $type="school-bag";
-                            include('wow-slider/index.php');
-                                ?> </td>
-                            <td style="border:solid; width:25%;"> <?php
-                                
-                            $type="shirt";
-                            include('wow-slider/index.php');
-                                ?> </td>
-                            <td style="border:solid; width:25%;"> <?php
-                            $type="shoes";    
-                            
-                            include('wow-slider/index.php');
-                                ?> </td>
-                            <td style="border:solid; width:25%;">  <?php
-                            $type="tickets";    
-                            include('wow-slider/index.php');
-                                ?> </td>
-                        </tr>
-                        <tr><td><br /></td></tr>                                
-                        <tr style="margin-top:5px; border:solid">
-                            <td style="border:solid; width:25%;">  <?php
-                                
-                            $type="travel-bag";
-                            include('wow-slider/index.php');
-                                ?> </td>
-                            <td style="border:solid; width:25%;">
-                                <?php
-                                
-                                $type="tv";
-                                include('wow-slider/index.php');
-                                ?> 
-                            </td>
-                            <td style="border:solid; width:25%;">
-
-                                <?php
-                                $type="watch";
-                                include('wow-slider/index.php');
-                                ?> 
-                            </td>
-                            <td style="border:solid; width:25%;">                                
-                                <?php
-                                $type="ladies-bag";
-                                include('wow-slider/index.php');
-                                ?> 
-                            </td>
-                        </tr>
+                        
                     </table>	<!--Content 20 Box-->
             	</div>
         	</div>					        

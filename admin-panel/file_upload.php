@@ -1,9 +1,11 @@
 <?php
-session_start();
+if(!session_status()) {
+    session_start();
+}
 require_once '../config.php';
 	require("../webconfig.php");
 
-if ($_POST["submit"] != null) {
+if (array_key_exists("submit", $_REQUEST)) {
     if ((($_FILES["file"]["type"] == "image/gif")
             || ($_FILES["file"]["type"] == "image/jpeg")
             || ($_FILES["file"]["type"] == "image/pjpeg")
@@ -23,7 +25,8 @@ if ($_POST["submit"] != null) {
            
             $folderUrl="../wow-slider/data/images/".$_POST["Header"]."";        
 
-            if(mkdir($folderUrl)){                
+            if(!is_dir($folderUrl)){
+                mkdir($folderUrl);
                 echo 'folder created';
             }
             $url="../wow-slider/data/images/".$_POST["Header"]."/"; 
