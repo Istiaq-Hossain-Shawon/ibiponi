@@ -3,6 +3,7 @@
     require_once("config.php");
     require_once("util/AppUtil.php");
 	require("webconfig.php");
+require_once("admin-panel/Database.php");
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -975,6 +976,11 @@
                                             <table style="margin-top:4%;" border="3">
                         <?php
                         $type = $_REQUEST["type"];
+
+                        $db=new Database();
+                        $db->controls();
+                        $db->connection();
+
                             //$categories = \Util\AppUtil::getFileNames("wow-slider/data/images/");
 
                         $images = \Util\AppUtil::getFileNames("wow-slider/data/images/" . $type);
@@ -986,7 +992,8 @@
                             if($i%4 == 0) {
                                 echo '<tr class="ma-main-container col1-layout">';
                             }
-                            echo '<td style="border:thin; width:25%;"> <a href="product.php?type='.$type.'">
+
+                            echo '<td style="border:thin; width:25%;"> <a href="product.php?product='.$db->getProductProductCode(\Util\AppUtil::get_file_title($img)).'">
                                                 <img src="'.$src.'" alt="'.$img.'" title="'.\Util\AppUtil::get_file_title($img).'" id="wows1_0" height="240" width="210"/>
                                             </a>
                                          </td><td style="border:thin; width:25%;></td>';

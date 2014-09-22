@@ -54,24 +54,39 @@ if (array_key_exists("submit", $_REQUEST)) {
             echo "Upload: " . $_FILES["file"]["name"] . "<br />";
             echo "Type: " . $_FILES["file"]["type"] . "<br />";
             echo "Size: " . ($_FILES["file"]["size"] / 1024) . " Kb<br />";
-           
-            $folderUrl="../wow-slider/data/images/".$_POST["Header"]."";        
 
+
+            $db=new Database();
+            $db->controls();
+            $db->connection();
+            $db->getGroupId($_POST["Header"]);
+            //$folderUrl="../wow-slider/data/images/".$_POST["Header"]."";
+
+            $folderUrl="../wow-slider/data/images/".$db->getGroupId($_POST["Header"])."";
             if(!is_dir($folderUrl)){
                 mkdir($folderUrl);
                 echo 'folder created';
             }
-            $url="../wow-slider/data/images/".$_POST["Header"]."/"; 
-            
-            
-            if (file_exists($url . $_FILES["file"]["name"])) {
-                echo $_FILES["file"]["name"] . " already exists. ";
+            $url="../wow-slider/data/images/".$db->getGroupId($_POST["Header"])."/";
+
+
+            if (file_exists($url . $_POST['product_name'])) {
+                echo $_POST['product_name'] . " already exists. ";
             } else {
-                move_uploaded_file($_FILES["file"]["tmp_name"], $url . $_FILES["file"]["name"]);
-                echo "Stored in: " . $url . $_FILES["file"]["name"];
-                $String = $_FILES["file"]["name"];               
+                move_uploaded_file($_FILES["file"]["tmp_name"], $url . $_POST['product_name']);
+                echo "Stored in: " . $url . $_POST['product_name'];
+                $String = $_POST['product_name'];
 
             }
+
+//            if (file_exists($url . $_FILES["file"]["name"])) {
+//                echo $_FILES["file"]["name"] . " already exists. ";
+//            } else {
+//                move_uploaded_file($_FILES["file"]["tmp_name"], $url . $_FILES["file"]["name"]);
+//                echo "Stored in: " . $url . $_FILES["file"]["name"];
+//                $String = $_FILES["file"]["name"];
+//
+//            }
         }
     } else {
         echo 'File type is not valid';
