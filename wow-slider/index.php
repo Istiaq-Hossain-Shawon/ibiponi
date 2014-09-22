@@ -11,10 +11,10 @@
     
 
         <div class="slider-container">
-            <div class="wowslider-container">
-                <div class="ws_images"><ul>
+                            <div class="wowslider-container">
+                                <div class="ws_images"><ul>
                         
-                            
+
                         </a>
                         <?php
                         $images = \Util\AppUtil::getFileNames("wow-slider/data/images/" . $type);
@@ -22,10 +22,11 @@
                         
                               foreach($images as $img) {
                                   $src = BASE_URL.'wow-slider/data/images/'.$type.'/'.$img;
-                                  echo '<li><a href="productList.php"><img src="'.$src.'" alt="'.$img.'" title="'.\Util\AppUtil::get_file_title($img).'" id="wows1_0" height="240"/></a></li>';
+                                  echo '<li><a href="productList.php?type='.$type.'"><img src="'.$src.'" alt="'.$img.'" title="'.\Util\AppUtil::get_file_title($img).'" id="wows1_0" height="240"/></a></li>';
                                   $tips.='<a href="productList.php"><img src="'.$src.'" alt="'.$img.'" height="30" width="30"/>1</a>';
                               }
                         ?>
+
                     </ul></div>
                 <div class="ws_bullets"><div>
                         <?php

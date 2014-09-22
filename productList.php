@@ -971,26 +971,48 @@
                                    	
                                    	<div style="margin-top:1%; height:31%">
                                         <div class="input-form" style="float:left; height:100%; width:33%;">
-                                           <table style="margin-top:4%;">
+                                            <div class="ws_images">
+                                            <table style="margin-top:4%;" border="3">
                         <?php
-                            $categories = \Util\AppUtil::getFileNames("wow-slider/data/images/");
-                            $cate_size = count($categories);
-                            $i = 0;
-                            foreach($categories as $category) {
-                                if($i%4 == 0) {
-                                    echo '<tr class="ma-main-container col1-layout">';
-                                }
-                                echo '<td style="border:thin; width:25%;">';
-                                $type = $category;
-                                include('wow-slider/index.php');
-                                echo '</td>';
-                                $i++;
-                                if($i%4 == 0) {
-                                    echo '</tr><tr><td><br></td></tr>';
-                                }
+                        $type = $_REQUEST["type"];
+                            //$categories = \Util\AppUtil::getFileNames("wow-slider/data/images/");
+
+                        $images = \Util\AppUtil::getFileNames("wow-slider/data/images/" . $type);
+
+                        $i = 0;
+                        foreach($images as $img) {
+                                    $src = BASE_URL.'wow-slider/data/images/'.$type.'/'.$img;
+
+                            if($i%4 == 0) {
+                                echo '<tr class="ma-main-container col1-layout">';
                             }
+                            echo '<td style="border:thin; width:25%;"> <a href="product.php?type='.$type.'">
+                                                <img src="'.$src.'" alt="'.$img.'" title="'.\Util\AppUtil::get_file_title($img).'" id="wows1_0" height="240" width="210"/>
+                                            </a>
+                                         </td><td style="border:thin; width:25%;></td>';
+                            $i++;
+                            if($i%4 == 0) {
+                                echo '</tr>';
+                            }
+                                    //'<a href="productList.php"><img src="'.$src.'" alt="'.$img.'" height="30" width="30"/>1</a>';
+                                }
+
                         ?>
-                    </table> 
+                                                <br></tr>
+                                                <tr style="border: 1">
+                                                    <td>
+                                                    <div class="ma-footer-container">
+                                                        <div class="footer">
+                                                            <address>© 2013 ibiponi.com, All Rights Reserved. </address>
+                                                            <div style="display: none;" id="back-top">	</div>
+                                                        </div>
+
+                                                    </div>
+                                                    </td>
+                                                </tr>
+                    </table>
+      </div>
+
                                            
                                         </div>
                                         <script type="text/javascript">
@@ -1115,12 +1137,7 @@
         </style>
 		<!--<div class="clearer" style="margin-top:-20px;">&nbsp;</div>-->
         <div class="recent_sale"><div class="clearer"></div></div>    
-        <div class="ma-footer-container">
-            <div class="footer">
-                        <address>© 2013 ibiponi.com, All Rights Reserved. </address>
-                        <div style="display: none;" id="back-top">	</div>
-            </div>
-        </div>
+
         
         <div id="ajax_login_wrapper" style="display:none;" ;="">
             <div id="ajax_login_contents">       

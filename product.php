@@ -1,7 +1,10 @@
-<?php 
+<?php  
 	session_start();
+    require_once("config.php");
+    require_once("util/AppUtil.php");
 	require("webconfig.php");
 ?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
@@ -23,6 +26,12 @@
 			}
         </style>
         <link rel="stylesheet" type="text/css" href="index_files/skin1.css">
+
+
+        <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+        <link id="switch_style" href="bootstrap/css/united/bootstrap.css" rel="stylesheet">
+        <link href="css/main.css" rel="stylesheet">
+        <link href="css/jquery.rating.css" rel="stylesheet">
         <style type="text/css">
             .brands_slider_home{clear: both;margin: 0;padding: 30px 0 0;}
             .bestoffer_body .gallerytable ul{margin:0 0 0 10px !important;}
@@ -56,20 +65,20 @@
         <meta name="keywords" content="">
         
         <link rel="icon" href="" type="image/x-icon">
-        <link rel="stylesheet" type="text/css" href="index_files/styles.css" media="all">
-        <link rel="stylesheet" type="text/css" href="index_files/widgets.css" media="all">
-        <link rel="stylesheet" type="text/css" href="index_files/fish_menu.css" media="all">
-        <link rel="stylesheet" type="text/css" href="index_files/popup.css" media="all">
-        <link rel="stylesheet" type="text/css" href="index_files/styles_002.css" media="all">
-        <link rel="stylesheet" type="text/css" href="index_files/ma_002.css" media="all">
-        <link rel="stylesheet" type="text/css" href="index_files/nav.css" media="all">
-        <link rel="stylesheet" type="text/css" href="index_files/ma_003.css" media="all">
-        <link rel="stylesheet" type="text/css" href="index_files/ma_006.css" media="all">
-        <link rel="stylesheet" type="text/css" href="index_files/ma_004.css" media="all">
-        <link rel="stylesheet" type="text/css" href="index_files/ma_005.css" media="all">
-        <link rel="stylesheet" type="text/css" href="index_files/ma.css" media="all"> 
-        <link rel="stylesheet" type="text/css" href="index_files/ma_007.css" media="all">
-        <link rel="stylesheet" type="text/css" href="index_files/print.css" media="print">
+    <link rel="stylesheet" type="text/css" href="index_files/styles.css" media="all">
+    <link rel="stylesheet" type="text/css" href="index_files/widgets.css" media="all">
+    <link rel="stylesheet" type="text/css" href="index_files/fish_menu.css" media="all">
+    <link rel="stylesheet" type="text/css" href="index_files/popup.css" media="all">
+    <link rel="stylesheet" type="text/css" href="index_files/styles_002.css" media="all">
+    <link rel="stylesheet" type="text/css" href="index_files/ma_002.css" media="all">
+    <link rel="stylesheet" type="text/css" href="index_files/nav.css" media="all">
+    <link rel="stylesheet" type="text/css" href="index_files/ma_003.css" media="all">
+    <link rel="stylesheet" type="text/css" href="index_files/ma_006.css" media="all">
+    <link rel="stylesheet" type="text/css" href="index_files/ma_004.css" media="all">
+    <link rel="stylesheet" type="text/css" href="index_files/ma_005.css" media="all">
+    <link rel="stylesheet" type="text/css" href="index_files/ma.css" media="all"> 
+    <link rel="stylesheet" type="text/css" href="index_files/ma_007.css" media="all">
+    <link rel="stylesheet" type="text/css" href="index_files/print.css" media="print">
     
         <script src="index_files/ga.js" async="" type="text/javascript"></script>
         <script src="index_files/ga.js" async="" type="text/javascript"></script>
@@ -113,8 +122,8 @@
     </script>
     
         <script type="text/javascript">
-    	    var Translator = new Translate([]);
-	    </script>
+        var Translator = new Translate([]);
+    </script>
     	        
         <script src="index_files/mixpanel-2.js" async="" type="text/javascript"></script>        
 		<!------->
@@ -122,8 +131,8 @@
         <script src="js/ajax.js" type="text/javascript" language="javascript"></script>  
         <script src="js/submitter.js" type="text/javascript" language="javascript"></script>     
         <style media="screen" type="text/css">
-		#dddContent {visibility:hidden}
-		</style>
+    #dddContent {visibility:hidden}
+    </style>
         <style media="screen" type="text/css">#easyInlineSwf {visibility:hidden}</style>
         
 		<style type="text/css">
@@ -134,59 +143,68 @@
         .adbox  { padding:0 !important; margin:0 !important; display:block; xwidth:400px; xheight:200px;  z-index:2000000000; text-decoration:none !important;}
         </style>
                                                                                                                                                           <style type="text/css">
-																																						  #reviewsDisp , #reviewsDisp * { position:relative; color:inherit; font-family:Arial; font-weight:inherit; font-size:inherit; margin:0; padding:0; box-sizing:content-box; -moz-box-sizing:content-box; -webkit-box-sizing:content-box; text-align:center; line-height:1; border:none; -webkit-border-radius:0; -moz-border-radius:0; border-radius:0; text-shadow:none;-moz-box-shadow: none; -webkit-box-shadow: none;box-shadow: none;overflow:hidden; }#reviewsDisp { display:block; position:relative; margin:9px; width:143px; height:70px; color:#BABABA; background:#FFF; border:1px solid #BABABA; -webkit-border-radius:5px; -moz-border-radius:5px; border-radius:5px; overflow:hidden; }#reviewsDisp.reviewRed { color:#C66; }#reviewsDisp.reviewYellow { color:#C90; }#reviewsDisp.reviewGreen { color:#6B9E0C; }#reviewsDisp .reviewContent { display:block; float:left; width:119px;  }#reviewsDisp .reviewTitle { height:23px; font-size:14px; color:#69C; font-weight:bold; background: #ffffff; background: -moz-linear-gradient(top,  #ffffff 0%, #eeeeee 100%); background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#eeeeee));background: -webkit-linear-gradient(top,  #ffffff 0%,#eeeeee 100%);  background: -o-linear-gradient(top,  #ffffff 0%,#eeeeee 100%);  background: -ms-linear-gradient(top,  #ffffff 0%,#eeeeee 100%);  background: linear-gradient(to bottom,  #ffffff 0%,#eeeeee 100%);  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#eeeeee',GradientType=0 );  }#reviewsDisp.trust.reviewRed .reviewTitle, #reviewsDisp.trust.reviewYellow .reviewTitle, #reviewsDisp.trust.reviewGreen .reviewTitle { color:inherit; }#reviewsDisp .reviewTitle > div { line-height:23px; }#reviewsDisp .reviewSection { height:28px; margin:5px 0 0; font-size:12px; font-weight:bold; }#reviewsDisp .reviewSection .percent.rated { font-size:26px }#reviewsDisp .reviewSection .percent span { font-size:18px; position:relative; top:-7px; }#reviewsDisp .reviewSection .reviewStars { color:#BABABA;font-size:12px;margin-left:4px; }#reviewsDisp .reviewSection .reviewStar { float:left; margin-top:3px; width:22px; height:22px; background:url(//wac.edgecastcdn.net/800952/a1008/app/review_sprite.png) transparent; background }#reviewsDisp .reviewSection .reviewStar.reviewStarFull { background-position:-5px -88px }#reviewsDisp .reviewSection .reviewStar.reviewStarHalf { background-position:-27px -88px }#reviewsDisp .reviewSection .reviewStar.reviewStarNone { background-position:-49px -88px }#reviewsDisp .reviewFooter { font-size:10px; line-height:12px;color:#BABABA; }#reviewsDisp.trust .reviewFooter { color:inherit; margin:0 5px; overflow:hidden; }.trust .rate { display:none }.rate .trust { display:none }#reviewsDisp .reviewNav { width:24px; display:block; float:right; }#reviewsDisp .reviewNav .reviewBtn { display:block; height:23px; background:url(//wac.edgecastcdn.net/800952/a1008/app/review_sprite.png) transparent; background-color:#E3E3E3; border-bottom:1px solid #FFF;cursor:pointer; }#reviewsDisp .reviewNav .reviewBtn:last-child { border-bottom:none; }#reviewsDisp .reviewNav .reviewBtn.hover { background-color:#D1D1D1; }#reviewsDisp .reviewNav .reviewBtn.reviewSelected { background-color:#BABABA; cursor:auto; }#reviewsDisp .reviewNav .reviewBtn.reviewCheck { background-position: -3px -6px }#reviewsDisp .reviewNav .reviewBtn.reviewSelected.reviewCheck { background-position: -33px -6px }#reviewsDisp .reviewNav .reviewBtn.reviewThumb { background-position: -3px -59px }#reviewsDisp .reviewNav .reviewBtn.reviewSelected.reviewThumb { background-position: -33px -59px }#reviewsDisp .reviewNav .reviewBtn.reviewInfo { background-position: -3px -32px }</style><style type="text/css">#TT_Frame { display:none; position:fixed;_position:absolute; top:auto; right:auto; bottom:0px;  _bottom:expression(eval(closed ? 40 : 0 - document.body.scrollTop));left:0px;font-size:15px/1em !important;font-family: Arial, sans-serif !important;text-shadow:none; margin:0;  }#TT_Frame { z-index:2147483645;background: none repeat scroll 0% 0% rgb(250, 250, 250); border: medium none rgb(250, 250, 250); padding: 0px; margin: 0px; border-radius: 0px 0px 2px 2px; box-shadow: 0px 0px 5px rgb(0, 0, 0); }#TT_Frame.TT_Side { position:fixed;top:0px; bottom:auto; _position:absolute;_bottom:auto; _top:eval(document.body.scrollTop); }#TT_Frame.TT_Side.left { left:0px; right:auto; }#TT_Frame.TT_Side.right { left:auto; right:0px; }#TT_Frame { width:100%; height:34px; }#TT_Frame.small { font-size:12px !important; }#TT_Frame.TT_Side { width:160px; height:100%; }#TT_Close_Btn { position:absolute; top:12px; right:3px; bottom:auto; left:auto; width: 10px; height: 10px; background:url(//wac.edgecastcdn.net/800952/a1004/app/img/tt_buttons.png) no-repeat -1px -32px; cursor:pointer }.TT_Side #TT_Close_Btn { top:5px;right:5px; }#TT_Close_Btn.hover { background-position:-1px -32px; }#TT_Branding { position:absolute; top:8px; right:auto; bottom:auto; left:15px; width:16px; height:16px; background:url(//wac.edgecastcdn.net/800952/a1004/app/img/tt_buttons.png) no-repeat -20px -31px; cursor:pointer; }.buzzdock #TT_Branding { width:26px; height:18px; }.TT_Side #TT_Branding { top:2px; left:2px; }#TT_Branding.hover { background-position:-46px -31px; }.buzzdock #TT_Branding.hover { background-position:-51px -31px; }#TT_Related { position:absolute; overflow:hidden; }#TT_Related { top:4px; right:auto; bottom:auto; height:22px; padding:0 20px 0 45px; width:100% !important; }.TT_Side #TT_Related { margin:25px 0 92px; top:0; right:auto; bottom:auto; left:0; height:auto; padding:0; }#TT_Related ul { line-height: 24px; margin:0; padding:0; list-style: none; text-align:left; }#TT_Related ul li { font-family: Arial,sans-serif !important; text-shadow: none !important; font-size:15px !important; background:none;background-image:none !important;float:left; clear:right; margin:0; padding: 0 7px;list-style:none;color:#000; background:none; list-style: none; line-height:24px !important; }#TT_Related > ul > li > a { font-size: 15px !important; white-space:normal; }#TT_Related > ul > li > a > .author { width:128px; text-align:right !important; font-size: 10px !important; line-height:10px; font-style:italic; font-weight:normal; color:#999; }.small #TT_Related ul li { background:none;background-image:none !important;margin:0 5px; padding: 0 5px; list-style: none;clear:both }.TT_Side #TT_Related ul li { float:none; display:block; margin-bottom:20px; }.TT_Side #TT_Related ul li:first-child { margin-bottom:5px; }.TT_Side #TT_Related ul li.divider { display:none; }#TT_Related ul li:before, #TT_Related ul li:before { display:none !important; background:none !important; }#TT_Related ul li:last { background:none;background-image !important:none;margin:0; padding:0;list-style: none; }#TT_Related a { color:#0645AD !important;background:none !important; background-image:none !important; text-decoration:none; text-transform:capitalize; text-shadow:none; font-weight:600; padding:0; margin:0;text-align:left !important; float:none !important; }.TT_Side #TT_Related a { display:block; line-height:20px; }#TT_Related li.tt_related_img:hover { background:#e5e5e5; }#TT_Related li.tt_related_img a > div { position:relative; height:100%; margin-bottom:12px; text-align:center; }#TT_Related a > div.related_sm  { float:left; clear:both; margin-right:5px; }#TT_Related a > div.related_sm img { width:32px; height:auto; }#TT_Related a > div .cc_attribution { font-size:6pt; line-height:8px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px; width:7px; color:#CCC; border:1px solid #CCC; color:rbga(255,255,255,.5) cursor:pointer; position:relative; margin-top:2px;text-decoration:none; }#TT_Related a > div.related_lg .cc_attribution { position:absolute; right:2px; left:auto; bottom:-12px; top:auto; }#TT_Related a > div.related_sm .cc_attribution { right:auto; left:0;  }#TT_Related hr { margin:5px 0; clear:both; }#TT_Related .video { cursor:pointer; }#TT_Related .video a { text-decoration:underline; }#TT_Related a:hover { color:#0645AD; text-decoration:underline;padding:0; margin:0; }#TT_Related a:hover * { text-decoration:none !important; }#TT_Closed { z-index:9999999999; position:fixed; width: 22px; height:27px; background: none repeat scroll 0% 0% rgb(250, 250, 250); border: medium none rgb(250, 250, 250); padding: 0px; margin: 0px; border-radius: 0px 0px 2px 2px; box-shadow: 0px 0px 5px rgb(0, 0, 0); display: block; cursor:pointer; }#TT_Closed { top:auto;right:5px;bottom:-40px;left:auto; _position:absolute; _bottom:expression(eval(closed ? 40 : 0 - document.body.scrollTop) + "px");  }#TT_Closed.buzzdock { width:32px }#TT_ClosedBranding { position:relative; margin:2px auto; width:16px; height:16px; background:url(//wac.edgecastcdn.net/800952/a1004/app/img/tt_buttons.png) no-repeat -46px -31px; }.buzzdock #TT_ClosedBranding { width:25px; background-position:-51px -31px; }.TT_Side #TT_ClosedBranding { margin:2px; display:inline-block }#TT_ClosedArrow { position:relative; margin:2px auto; width:16px; height:5px; background:url(//wac.edgecastcdn.net/800952/a1004/app/img/tt_buttons.png) no-repeat -165px -38px; }#TT_ClosedArrow.hover { background-position:-190px -38px }.TT_Side #TT_ClosedArrow { display:none; }#TT_Frame , #TT_Closed { transition: left 1s, right 1s, bottom 1s; -moz-transition: left 1s, right 1s, bottom 1s; -webkit-transition:  left 1s, right 1s, bottom 1s;  -o-transition: width  left 1s, right 1s, bottom 1s; }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    #reviewsDisp , #reviewsDisp * { position:relative; color:inherit; font-family:Arial; font-weight:inherit; font-size:inherit; margin:0; padding:0; box-sizing:content-box; -moz-box-sizing:content-box; -webkit-box-sizing:content-box; text-align:center; line-height:1; border:none; -webkit-border-radius:0; -moz-border-radius:0; border-radius:0; text-shadow:none;-moz-box-shadow: none; -webkit-box-shadow: none;box-shadow: none;overflow:hidden; }#reviewsDisp { display:block; position:relative; margin:9px; width:143px; height:70px; color:#BABABA; background:#FFF; border:1px solid #BABABA; -webkit-border-radius:5px; -moz-border-radius:5px; border-radius:5px; overflow:hidden; }#reviewsDisp.reviewRed { color:#C66; }#reviewsDisp.reviewYellow { color:#C90; }#reviewsDisp.reviewGreen { color:#6B9E0C; }#reviewsDisp .reviewContent { display:block; float:left; width:119px;  }#reviewsDisp .reviewTitle { height:23px; font-size:14px; color:#69C; font-weight:bold; background: #ffffff; background: -moz-linear-gradient(top,  #ffffff 0%, #eeeeee 100%); background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#eeeeee));background: -webkit-linear-gradient(top,  #ffffff 0%,#eeeeee 100%);  background: -o-linear-gradient(top,  #ffffff 0%,#eeeeee 100%);  background: -ms-linear-gradient(top,  #ffffff 0%,#eeeeee 100%);  background: linear-gradient(to bottom,  #ffffff 0%,#eeeeee 100%);  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#eeeeee',GradientType=0 );  }#reviewsDisp.trust.reviewRed .reviewTitle, #reviewsDisp.trust.reviewYellow .reviewTitle, #reviewsDisp.trust.reviewGreen .reviewTitle { color:inherit; }#reviewsDisp .reviewTitle > div { line-height:23px; }#reviewsDisp .reviewSection { height:28px; margin:5px 0 0; font-size:12px; font-weight:bold; }#reviewsDisp .reviewSection .percent.rated { font-size:26px }#reviewsDisp .reviewSection .percent span { font-size:18px; position:relative; top:-7px; }#reviewsDisp .reviewSection .reviewStars { color:#BABABA;font-size:12px;margin-left:4px; }#reviewsDisp .reviewSection .reviewStar { float:left; margin-top:3px; width:22px; height:22px; background:url(//wac.edgecastcdn.net/800952/a1008/app/review_sprite.png) transparent; background }#reviewsDisp .reviewSection .reviewStar.reviewStarFull { background-position:-5px -88px }#reviewsDisp .reviewSection .reviewStar.reviewStarHalf { background-position:-27px -88px }#reviewsDisp .reviewSection .reviewStar.reviewStarNone { background-position:-49px -88px }#reviewsDisp .reviewFooter { font-size:10px; line-height:12px;color:#BABABA; }#reviewsDisp.trust .reviewFooter { color:inherit; margin:0 5px; overflow:hidden; }.trust .rate { display:none }.rate .trust { display:none }#reviewsDisp .reviewNav { width:24px; display:block; float:right; }#reviewsDisp .reviewNav .reviewBtn { display:block; height:23px; background:url(//wac.edgecastcdn.net/800952/a1008/app/review_sprite.png) transparent; background-color:#E3E3E3; border-bottom:1px solid #FFF;cursor:pointer; }#reviewsDisp .reviewNav .reviewBtn:last-child { border-bottom:none; }#reviewsDisp .reviewNav .reviewBtn.hover { background-color:#D1D1D1; }#reviewsDisp .reviewNav .reviewBtn.reviewSelected { background-color:#BABABA; cursor:auto; }#reviewsDisp .reviewNav .reviewBtn.reviewCheck { background-position: -3px -6px }#reviewsDisp .reviewNav .reviewBtn.reviewSelected.reviewCheck { background-position: -33px -6px }#reviewsDisp .reviewNav .reviewBtn.reviewThumb { background-position: -3px -59px }#reviewsDisp .reviewNav .reviewBtn.reviewSelected.reviewThumb { background-position: -33px -59px }#reviewsDisp .reviewNav .reviewBtn.reviewInfo { background-position: -3px -32px }</style><style type="text/css">#TT_Frame { display:none; position:fixed;_position:absolute; top:auto; right:auto; bottom:0px;  _bottom:expression(eval(closed ? 40 : 0 - document.body.scrollTop));left:0px;font-size:15px/1em !important;font-family: Arial, sans-serif !important;text-shadow:none; margin:0;  }#TT_Frame { z-index:2147483645;background: none repeat scroll 0% 0% rgb(250, 250, 250); border: medium none rgb(250, 250, 250); padding: 0px; margin: 0px; border-radius: 0px 0px 2px 2px; box-shadow: 0px 0px 5px rgb(0, 0, 0); }#TT_Frame.TT_Side { position:fixed;top:0px; bottom:auto; _position:absolute;_bottom:auto; _top:eval(document.body.scrollTop); }#TT_Frame.TT_Side.left { left:0px; right:auto; }#TT_Frame.TT_Side.right { left:auto; right:0px; }#TT_Frame { width:100%; height:34px; }#TT_Frame.small { font-size:12px !important; }#TT_Frame.TT_Side { width:160px; height:100%; }#TT_Close_Btn { position:absolute; top:12px; right:3px; bottom:auto; left:auto; width: 10px; height: 10px; background:url(//wac.edgecastcdn.net/800952/a1004/app/img/tt_buttons.png) no-repeat -1px -32px; cursor:pointer }.TT_Side #TT_Close_Btn { top:5px;right:5px; }#TT_Close_Btn.hover { background-position:-1px -32px; }#TT_Branding { position:absolute; top:8px; right:auto; bottom:auto; left:15px; width:16px; height:16px; background:url(//wac.edgecastcdn.net/800952/a1004/app/img/tt_buttons.png) no-repeat -20px -31px; cursor:pointer; }.buzzdock #TT_Branding { width:26px; height:18px; }.TT_Side #TT_Branding { top:2px; left:2px; }#TT_Branding.hover { background-position:-46px -31px; }.buzzdock #TT_Branding.hover { background-position:-51px -31px; }#TT_Related { position:absolute; overflow:hidden; }#TT_Related { top:4px; right:auto; bottom:auto; height:22px; padding:0 20px 0 45px; width:100% !important; }.TT_Side #TT_Related { margin:25px 0 92px; top:0; right:auto; bottom:auto; left:0; height:auto; padding:0; }#TT_Related ul { line-height: 24px; margin:0; padding:0; list-style: none; text-align:left; }#TT_Related ul li { font-family: Arial,sans-serif !important; text-shadow: none !important; font-size:15px !important; background:none;background-image:none !important;float:left; clear:right; margin:0; padding: 0 7px;list-style:none;color:#000; background:none; list-style: none; line-height:24px !important; }#TT_Related > ul > li > a { font-size: 15px !important; white-space:normal; }#TT_Related > ul > li > a > .author { width:128px; text-align:right !important; font-size: 10px !important; line-height:10px; font-style:italic; font-weight:normal; color:#999; }.small #TT_Related ul li { background:none;background-image:none !important;margin:0 5px; padding: 0 5px; list-style: none;clear:both }.TT_Side #TT_Related ul li { float:none; display:block; margin-bottom:20px; }.TT_Side #TT_Related ul li:first-child { margin-bottom:5px; }.TT_Side #TT_Related ul li.divider { display:none; }#TT_Related ul li:before, #TT_Related ul li:before { display:none !important; background:none !important; }#TT_Related ul li:last { background:none;background-image !important:none;margin:0; padding:0;list-style: none; }#TT_Related a { color:#0645AD !important;background:none !important; background-image:none !important; text-decoration:none; text-transform:capitalize; text-shadow:none; font-weight:600; padding:0; margin:0;text-align:left !important; float:none !important; }.TT_Side #TT_Related a { display:block; line-height:20px; }#TT_Related li.tt_related_img:hover { background:#e5e5e5; }#TT_Related li.tt_related_img a > div { position:relative; height:100%; margin-bottom:12px; text-align:center; }#TT_Related a > div.related_sm  { float:left; clear:both; margin-right:5px; }#TT_Related a > div.related_sm img { width:32px; height:auto; }#TT_Related a > div .cc_attribution { font-size:6pt; line-height:8px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px; width:7px; color:#CCC; border:1px solid #CCC; color:rbga(255,255,255,.5) cursor:pointer; position:relative; margin-top:2px;text-decoration:none; }#TT_Related a > div.related_lg .cc_attribution { position:absolute; right:2px; left:auto; bottom:-12px; top:auto; }#TT_Related a > div.related_sm .cc_attribution { right:auto; left:0;  }#TT_Related hr { margin:5px 0; clear:both; }#TT_Related .video { cursor:pointer; }#TT_Related .video a { text-decoration:underline; }#TT_Related a:hover { color:#0645AD; text-decoration:underline;padding:0; margin:0; }#TT_Related a:hover * { text-decoration:none !important; }#TT_Closed { z-index:9999999999; position:fixed; width: 22px; height:27px; background: none repeat scroll 0% 0% rgb(250, 250, 250); border: medium none rgb(250, 250, 250); padding: 0px; margin: 0px; border-radius: 0px 0px 2px 2px; box-shadow: 0px 0px 5px rgb(0, 0, 0); display: block; cursor:pointer; }#TT_Closed { top:auto;right:5px;bottom:-40px;left:auto; _position:absolute; _bottom:expression(eval(closed ? 40 : 0 - document.body.scrollTop) + "px");  }#TT_Closed.buzzdock { width:32px }#TT_ClosedBranding { position:relative; margin:2px auto; width:16px; height:16px; background:url(//wac.edgecastcdn.net/800952/a1004/app/img/tt_buttons.png) no-repeat -46px -31px; }.buzzdock #TT_ClosedBranding { width:25px; background-position:-51px -31px; }.TT_Side #TT_ClosedBranding { margin:2px; display:inline-block }#TT_ClosedArrow { position:relative; margin:2px auto; width:16px; height:5px; background:url(//wac.edgecastcdn.net/800952/a1004/app/img/tt_buttons.png) no-repeat -165px -38px; }#TT_ClosedArrow.hover { background-position:-190px -38px }.TT_Side #TT_ClosedArrow { display:none; }#TT_Frame , #TT_Closed { transition: left 1s, right 1s, bottom 1s; -moz-transition: left 1s, right 1s, bottom 1s; -webkit-transition:  left 1s, right 1s, bottom 1s;  -o-transition: width  left 1s, right 1s, bottom 1s; }
         </style>
     
-       <script src="index_files/ga.js"></script>
+        <script src="index_files/ga.js"></script>
     </head>
 
 	<body style="" class=" cms-index-index cms-home">
         <!-- top dropdown cart -->
         <div class="ma-shopping-contain"></div>
 		<script type="text/javascript">
-                $bn1(document).ready(function(){
-                    
-                    $bn1(".ma-shoppingcart").click(function(){
-                        $bn1(".ma-topcart").slideToggle(500);
-                        
-                    });
-					
-					
-					$bn1("#login").click(function(){
-						if($.trim($("#login-span1").text())=="Log in")
-							$bn1("#login-container").slideToggle(500);
-						else if($.trim($("#login-span1").text())=="Log out")
-							$bn1("#Logout-container").slideToggle(500);
-					});
-					
-					$bn1("#Registration").click(function(){
-						$bn1("#Registration-container").slideToggle(500);						
-					});
+			$bn1(document).ready(function(){
+				
+			$bn1(".ma-shoppingcart").click(function(){
+				$bn1(".ma-topcart").slideToggle(500);                        
+			});					
 			
-					$("#Logout").click(function(){
-						$.ajax({
-							url: "submitter.php",
-							type: "POST",
-							dataType:"json",							
-							data: { Logout : "Logout" },			
-							success:function(msg){
-								if(msg.success){
-									//Change value span 1 and 2	110px 145px : 145px;
-									$("#login-span1").text("Log in");
-									$("#header-container").css({"height":"110px"});
-									$("#custName").css({"display":"none"});
-									alert("Successfully Logout.");									
-									$("#Logout-container").slideToggle(500);
-								}/**/
-								else
-									alert(msg.message);
-							},
-							error:function(){
-								alert("Error");
-							}
-						});
-					});	//Logout					
-                });
+			$bn1("#login").click(function(){
+				if($.trim($("#login-span1").text())=="Log in")
+					$bn1("#login-container").slideToggle(500);
+				else if($.trim($("#login-span1").text())=="Log out")
+					$bn1("#Logout-container").slideToggle(500);
+			}); //Login Logout Toggle
+			
+			/*Registration JQUARY*/
+			
+			$bn1("#Registration").click(function(){
+				$bn1("#Registration-container").slideToggle(500);						
+			});
+			
+			$bn1("#ChangePassword").click(function(){
+				$bn1("#Logout-container").slideToggle(500);
+				$bn1("#ChangePassword-container").slideToggle(500);
+			});
+			
+			
+			/*$("#Logout").click(function(){
+				$.ajax({
+					url: "submitter.php",
+					type: "POST",
+					dataType:"json",
+					data: { Logout : "Logout" },
+					success:function(msg){
+						if(msg.success){
+							//Change value span 1 and 2	110px 145px : 145px;
+							$("#login-span1").text("Log in");
+							$("#header-container").css({"height":"110px"});
+							$("#custName").css({"display":"none"});
+							alert("Successfully Logout.");									
+							$("#Logout-container").slideToggle(500);
+						}
+						else
+							alert(msg.message);
+					},
+					error:function(error){
+						alert(eval(error));
+					}
+				});
+			});*/	 //Logout
+			
+			
+				
+			});
          </script>
         <!-- left or right easycart  -->
         <!-- BEGIN GOOGLE ANALYTICS CODEs -->
@@ -269,7 +287,7 @@
                                             <!--<strong>Bangladesh Brands</strong>-->
                                             <a href="http://ibiponi.com/index.php/" title="Ibiponi" class="logo" >
                                                 <!--<img src="img/logo-ibiponi.png" alt="Bangladesh Brands">-->
-                                                <table style="margin-top:-20px; width:260px;">
+                                                <table style="margin-top:-20px; width:290px;">
                                                     <tr><td style="font-size:36px; font-weight:bold;">ibiponi</td></tr>
                                                     <tr><td style="font-size:14px; ">It's Organise by Satkhira Consalting Firm Ltd.</td></tr>
                                                 </table>
@@ -338,7 +356,7 @@
                                                 </div>
                                     
                                                 <div align="left" style="padding-left:22%;" class="service_help_cus">
-                                                    <ul style="padding-left:449px;">
+                                                    <ul style="padding-left:63.7%;">
                                                         <li class="call_support"><span class="call_s_h_l">
                                                             <span id="bb28f41r0f_1" class="bb28f41r0f">Help Line</span> 
                                                             <img src="index_files/help_icon.png"></span> +880177778639</li>
@@ -441,6 +459,16 @@
 																cursor:pointer;
 																color:#FFF;
 															}
+															#ChangePassword-container{
+																display:none;
+																margin: 4% 0 0 -1%;
+																position:absolute; 
+																z-index:20;
+																border:solid;
+																border-radius:10px;
+																background-color:#F79021;
+																padding:10px;
+															}
                                                         </style>
                                                         <div align="center" id="Registration-container">
                                                         	<form id="frmRegistration">
@@ -477,7 +505,7 @@
                                                                         <tr>                        	
                                                                                 <td align="left" style="padding:5px;"></td>
                                                                                 <td style="padding:5px">
-                                                                                    <input class="button" value="Registration" id="btnRegistration" type="submit">
+                                                                                    <input class="button" value="Registration" id="btnRegistration" type="button">
                                                                                 </td>
                                                                                 <td style="padding:5px" align="left">
                                                                                 </td>
@@ -486,7 +514,6 @@
                                                                 </table>
                                                             </form>                                                           
                                                         </div>	<!--Registration Div-->
-                                                        
                                                         <div align="center" id="login-container">
                                                         	<form id="frmLogin">
                                                             	<input type="hidden" name="btnLogin" />
@@ -494,7 +521,7 @@
                                                                     <tbody>
                                                                         <tr>
                                                                             <td colspan="3" align="center">
-                                                                                <p style="font-size:18px" ;="" align="center">Login</p><br>
+                                                                                <p style="font-size:18px" align="center">Login</p><br>
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
@@ -550,7 +577,52 @@
                                                                     <tr>
                                                                         <td id="Logout">Logout</td>                                                                    </tr>
                                                                 </table>
-                                                        </div> <!--Logout Div-->
+                                                        </div>	<!--Logout Div-->
+                                                        <div id="ChangePassword-container">
+                                                        	<form id="frmChangePassword">
+                                                            	<input type="hidden" name="btnChangePassword"  />
+                                                                <table align="center">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td colspan="3" align="center">
+                                                                                <p style="font-size:18px" align="center">Change Password</p><br>
+                                                                            </td>
+                                                                        </tr>                                       
+                                                                        <tr>
+                                                                                <td align="right" style="padding:5px; text-align:right;">Old Password: </td>
+                                                                                <td style="padding:5px" colspan="2">
+                                                                                    <input name="oldPassword" placeholder="Enter Your Old Password" type="password">
+                                                                                </td>
+                                                                                <td style="padding-top:3%;">*</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                                <td align="right" style="padding:5px; text-align:right;">Password: </td>
+                                                                                <td style="padding:5px" colspan="2">
+                                                                                    <input name="password" placeholder="Enter Your Password" type="password">
+                                                                                </td>
+                                                                                <td style="padding-top:3%;">*</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                                <td align="right" style="padding:5px;">Conform Password:</td>
+                                                                                <td style="padding:5px" colspan="2">
+                                                                                    <input name="ConformPassword" placeholder="Enter Your Conform Password" type="password">
+                                                                                </td>
+                    
+                                                                                <td style="padding-top:3%;">*</td>
+                                                                        </tr>
+                                                                        <tr>                        	
+                                                                                <td align="left" style="padding:5px;"></td>
+                                                                                <td style="padding:5px">
+                                                                                    <input class="button" value="Change Password" id="btnChangePassword" type="button">
+                                                                                </td>
+                                                                                <td style="padding:5px" align="left">
+                                                                                </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </form>               
+                                                        </div>
+                                                        
                                                         
                                                         <div class="ma-shoppingcart">
                                                             <div class="cart-item">Selected</div>
@@ -613,42 +685,12 @@
                             </div> <!--Header-->
                             
                             <div class="category_search">
-                                <a href="javascript:void(0);" class="slide_menu" id="test" style="width:100px;float:left;background:#000;color:#FFF; padding:6px 0 6px 10px; margin:0 0 0 -15px; border-radius:5px 5px 0 0;text-align:left;line-height:14px;">
-                                <span>All <span style="font-weight:bold;">Categories</span></span>
-                                </a>
-                                <div class="category_menus">
-                                   
-                                        
-                                        <script type="text/javascript">
-											var litem_width=$('sidenav').getWidth()-2;
-											$$("div.litem").each (function (s){
-												s.setStyle({width:litem_width+"px"});
-											});
-											$$("div.litem").invoke("observe", "mouseover", function() {
-											var offset = this.cumulativeOffset();
-											var sidenav=$('sidenav').cumulativeOffset();
-											var sidenav_width=$('sidenav').getWidth()-2;
-											var offsetTop = offset[1];
-											var height= this.down('div.subitem').getHeight();
-											var sidenav_h =sidenav[1];
-											if ((offsetTop-sidenav_h)>height)
-											{
-												
-												offsetTop=(offsetTop-sidenav_h-(height/2));
-												this.down('div.subitem').setStyle({top:offsetTop+"px"});
-											}
-											
-											this.addClassName('hoverClass');this.down('div.subitem').setStyle({display:'block',left:sidenav_width+"px"}) });
-											$$("div.litem").invoke("observe", "mouseout", function() {
-											this.removeClassName('hoverClass');this.down('div.subitem').setStyle({display:'none'}) });
-										</script>	
-                                </div>
-                            
+
+
                                 <div style="width:950px;float:right;text-align:right;margin-bottom:5px;">
+
                                     <form id="search_mini_form" action="" method="get">
                                         <fieldset>
-                                            <legend>Search Site</legend>
-                                            <span style="float: left; position: relative; top: 8px; left: 15px;">Search</span>
                                             <div class="mini-search">
                                                 <select name="cat" id="cat" class="input-text">
                                                     <option selected="selected" value="">All Products</option>
@@ -688,44 +730,178 @@
                                 </div>
                                 <div class="clearer" style="margin-top:-1px;">&nbsp;</div>
                             </div>
-                       </div>
-                	</div>    
-                                
-                	<table style="margin-top:4%;">
-                        <tr class="ma-main-container col1-layout">		
-                            <td style="border:solid; width:25%;"><img style="height:242px;  width:100%;" src="img/fixed/ict.jpg"></td>
-                            <td style="border:solid; width:25%;"><img style="height:242px;  width:100%;" src="img/fixed/ict.jpg"></td>
-                            <td style="border:solid; width:25%;"><img style="height:242px;  width:100%;" src="img/fixed/ict.jpg"></td>
-                            <td style="border:solid; width:25%;"><img style="height:242px;  width:100%;" src="img/fixed/ict.jpg"></td>
-                        </tr>
-                        <tr><td><br /></td></tr>    
-                        <tr style="margin-top:5px; border:solid">
-                            <td style="border:solid; width:25%;"><img style="height:242px;  width:100%;" src="img/fixed/ict.jpg"></td>
-                            <td style="border:solid; width:25%;"><img style="height:242px;  width:100%;" src="img/fixed/ict.jpg"></td>
-                            <td style="border:solid; width:25%;"><img style="height:242px;  width:100%;" src="img/fixed/ict.jpg"></td>
-                            <td style="border:solid; width:25%;"><img style="height:242px;  width:100%;" src="img/fixed/ict.jpg"></td>
-                        </tr>
-                        <tr><td><br /></td></tr>                                
-                        <tr style="margin-top:5px; border:solid">
-                            <td style="border:solid; width:25%;"><img style="height:242px;  width:100%;" src="img/fixed/ict.jpg"></td>
-                            <td style="border:solid; width:25%;"><img style="height:242px;  width:100%;" src="img/fixed/ict.jpg"></td>
-                            <td style="border:solid; width:25%;"><img style="height:242px;  width:100%;" src="img/fixed/ict.jpg"></td>
-                            <td style="border:solid; width:25%;"><img style="height:242px;  width:100%;" src="img/fixed/ict.jpg"></td>
-                        </tr>
-                        <tr><td><br /></td></tr>                                
-                        <tr style="margin-top:5px; border:solid">
-                            <td style="border:solid; width:25%;"><img style="height:242px;  width:100%;" src="img/fixed/ict.jpg"></td>
-                            <td style="border:solid; width:25%;"><img style="height:242px;  width:100%;" src="img/fixed/ict.jpg"></td>
-                            <td style="border:solid; width:25%;"><img style="height:242px;  width:100%;" src="img/fixed/ict.jpg"></td>
-                            <td style="border:solid; width:25%;"><img style="height:242px;  width:100%;" src="img/fixed/ict.jpg"></td>
-                        </tr>
-                        <tr><td><br /></td></tr>                                
-                        <tr style="margin-top:5px; border:solid">
-                            <td style="border:solid; width:25%;"><img style="height:242px;  width:100%;" src="img/fixed/ict.jpg"></td>
-                            <td style="border:solid; width:25%;"><img style="height:242px;  width:100%;" src="img/fixed/ict.jpg"></td>
-                            <td style="border:solid; width:25%;"><img style="height:242px;  width:100%;" src="img/fixed/ict.jpg"></td>
-                            <td style="border:solid; width:25%;"><img style="height:242px;  width:100%;" src="img/fixed/ict.jpg"></td>
-                        </tr>
+                            
+                            <div class="ma-banner" style="position:relative;float: right;width:845px;right:20px; top:0px;">        
+                                <div class="ma-banner1-container">
+                                	<div style="width: 845px; height: 550px; " id="slideshowWrapper">	
+                                    <div id="loading" style="margin: 50px auto; display: none;"><img src="index_files/loading_bb.gif"></div>
+                                   	<ul id="slideshow" style="width: 845px; border-radius:10px; position: relative; overflow: hidden;">			
+                                        <li style="position: absolute; width: 845px;  display: list-item;">					
+                                            <a href="http://ibiponi.com/img/mslider/" title=""><img src="img/mslider/ICT.png" alt="" width="845" height="550px"></a>
+                                        </li>
+                                        <li style="position: absolute; width: 845px; display: list-item;">					
+                                            <a href="javascript:void(3);" title=""><img src="img/mslider/HoneySundorBon.jpg" alt="" width="845" height="550px"></a>
+                                        </li>
+                                        <li style="position: absolute; width: 845px; display: none;">					
+                                            <a href="javascript:void(3)" title=""><img src="img/mslider/Hony-Firm.jpg" alt="" width="845" height="550px"></a>
+                                        </li>
+                                    </ul>
+                                        <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+
+
+                                        <div style="margin-top:1%; height:31%">
+                                        <div class="input-form" style="float:left; height:100%; width:33%;">
+                                            <div class="container">
+
+                                                <div class="row">
+                                                    <div class="span9">
+                                                        <h1>Ipod touch</h1>
+                                                    </div>
+                                                </div>
+                                                <hr>
+
+                                                <div class="row">
+                                                    <div class="span3">
+                                                        <img alt="" src="css/images/ipod_touch.jpg" />
+
+
+                                                        <ul class="thumbnails">
+
+                                                            <li class="span1">
+                                                                <a href="#" class="thumbnail">
+                                                                    <img src="css/images/1_50.jpg" alt="">
+                                                                </a>
+                                                            </li>
+
+                                                            <li class="span1">
+                                                                <a href="#" class="thumbnail">
+                                                                    <img src="css/images/2_50.jpg" alt="">
+                                                                </a>
+                                                            </li>
+
+                                                            <li class="span1">
+                                                                <a href="#" class="thumbnail">
+                                                                    <img src="css/images/3_50.jpg" alt="">
+                                                                </a>
+                                                            </li>
+
+                                                        </ul>
+
+                                                    </div>
+                                                    <br>
+
+                                                    <div class="span6">
+
+                                                        <div class="span6">
+                                                            <address>
+                                                                <table>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <strong>Brand:</strong>
+                                                                        </td>
+                                                                        <td>
+                                                                            <span>Apple</span>
+                                                                        </td>
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td>
+                                                                            <strong>Product Code:</strong>
+                                                                        </td>
+                                                                        <td>
+                                                                            <span>Product 14</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <strong>Reward Points:</strong>
+                                                                        </td>
+                                                                        <td><span>0</span></td>
+
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><strong>Availability:</strong></td>
+                                                                        <td><span>Out Of Stock</span></td>
+                                                                    </tr>
+
+
+                                                                </table>
+                                                                <br>
+                                                                <table>
+                                                                    <tr>
+
+                                                                        <td>
+                                                                            <h2>
+                                                                                <strong>Price: $587.50</strong> <small>Ex Tax: $500.00</small><br /><br />
+                                                                            </h2>
+
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </address>
+
+                                                        </div>
+
+                                                        <div class="span6">
+                                                            <form class="form-inline">
+                                                                <div class="span3 no_margin_left">
+                                                                    <label>Qty:</label>
+                                                                    <input type="text" class="span1" placeholder="1">
+                                                                    <button class="btn btn-primary" type="submit">Add to cart</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="span9">
+                                                        <div class="tabbable">
+                                                            <ul class="nav nav-tabs">
+                                                                <li class="active"><a href="#1" data-toggle="tab">Description</a></li>
+
+                                                            </ul>
+                                                            <div class="tab-content">
+                                                                <div class="tab-pane active" id="1">
+                                                                    <p>Just when you thought iMac had everything, now there&apos;s even more. More powerful Intel Core 2 Duo processors. And more memory standard. Combine this with Mac OS X Leopard and iLife &apos;08, and it&apos;s more all-in-one than ever. iMac packs amazing performance into a stunningly slim space.
+                                                                    </p>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+
+
+                                            </div>
+
+                                        </div>
+
+                                                </div>
+                                        </div>
+
+                                        <div style="float:left; height:100%; width:33%;">
+
+
+                                        </div>
+                                        <div style="float:left; height:100%; width:33%;">
+
+                                        </div>
+                                        <div style="clear:both"></div>
+                                        </div>
+                                        </div>
+                                </div>
+                            </div>
+
+                            <div class="clearer" style="margin-top:-20px;">&nbsp;</div>
+                      </div>
+                    </div>
+                    <table style="margin-top:4%;">
+
                     </table>	<!--Content 20 Box-->
             	</div>
         	</div>					        

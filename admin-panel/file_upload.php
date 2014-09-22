@@ -3,7 +3,39 @@ if(!session_status()) {
     session_start();
 }
 require_once '../config.php';
-	require("../webconfig.php");
+require("../webconfig.php");
+require_once("Database.php");
+
+$name=new Database();
+$name->controls();
+$name->connection();
+if(!($name->con))
+{
+    echo 'Error: ' . mysql_error();
+}
+
+
+
+echo "thanks for taking the survey";
+
+if(isset($_POST['submit'])){
+
+    $name ->savePerson_detail($_POST);
+    $name=$_POST['Header'];
+    $product_name=$_POST['product_name'];
+    $Model_size=$_POST['Model_size'];
+    $Net_Prize=$_POST['Net_Prize'];
+    $Selling_Prize=$_POST['Selling_Prize'];
+    $Warranty=$_POST['Warranty'];
+    $PdtDescription=$_POST['Description'];
+    //$Brand_name=$_POST['Brand_name'];
+    $db=new Database();
+    $db->controls();
+    $db->connection();
+    $db->insert($name,$product_name,$Model_size,$Net_Prize,$Selling_Prize,$Warranty,$PdtDescription);
+
+}
+
 
 if (array_key_exists("submit", $_REQUEST)) {
     if ((($_FILES["file"]["type"] == "image/gif")
@@ -49,22 +81,47 @@ if (array_key_exists("submit", $_REQUEST)) {
 <table>
     <form action="file_upload.php" method="post" enctype="multipart/form-data">
         <tr>
-            <td>File:</td>
-            <td><input type="file" name="file" required/></td>
-        </tr>
-        <tr>
-            <td>Course Name:</td>
+            <td>Group header:</td>
             <td>
-                <input type="text" name="Header"  />
-<!--                <select name="course" required>
-                    //<?php
-//                    while ($row = mysql_fetch_array($coures)) {
-//                        echo "<option >" . $row[0] . "</option>";
-//                    }
-//                    ?>
-                </select>-->
+                <input type="text" name="Header" required />
+
             </td>
         </tr>
+        <tr>
+            <td>Product Name:</td>
+            <td><input type="text" name="product_name" required/></td>
+        </tr>
+        <tr>
+            <td>Model size:</td>
+            <td><input type="text" name="Model_size" /></td>
+        </tr>
+        <tr>
+            <td>Brand name:</td>
+            <td><input type="text" name="Brand_name" /></td>
+        </tr>
+        <tr>
+            <td>Net Prize:</td>
+            <td><input type="text" name="Net_Prize" /></td>
+        </tr>
+        <tr>
+            <td>Selling Prize:</td>
+            <td><input type="text" name="Selling_Prize" /></td>
+        </tr>
+        <tr>
+            <td>Warranty:</td>
+            <td><input type="text" name="Warranty" /></td>
+        </tr>
+        <tr>
+            <td>User:</td>
+            <td><input type="text" name="Description" /></td>
+        </tr>
+
+
+        <tr>
+            <td>File:</td>
+            <td><input type="file" name="file" /></td>
+        </tr>
+
         <tr>
             <td>&nbsp;</td>
             <td><input type="submit" name="submit" value="Submit" /></td>
